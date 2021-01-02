@@ -1,2 +1,2 @@
-# cmake-template
-Cmake minimal project
+# c++ utility functions and classes
+Minimal utility experiments

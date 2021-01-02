@@ -1,12 +1,14 @@
 cmake_minimum_required(VERSION 3.13)
 
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake)
+project(Utility VERSION 0.0.1)
 
-include(setup)
+string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
 
-project(Template)
+add_library(${PROJECT_NAME} INTERFACE)
+target_include_directories(${PROJECT_NAME}
+	INTERFACE
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+		$<INSTALL_INTERFACE:include/${PROJECT_NAME_LOWER}>
+)
+add_library(${CMAKE_PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
-set(CMAKE_CXX_EXTENSIONS OFF)
-
-add_subdirectory(lib)
-add_subdirectory(app)
